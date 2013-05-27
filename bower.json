@@ -1,0 +1,14 @@
+{
+  "name": "relative",
+  "description": "Relative date library",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jgallen23/relative",
+  "license": "MIT",
+  "copyright": "Greg Allen",
+  "main": "dist/relative.js",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "assert": "*"
+  }
+}
