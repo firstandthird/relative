@@ -34,7 +34,7 @@ relative(new Date(2013, 5, 27, 3, 0));
 ###Example return values
 
 - Just now
-- 5 minutues ago
+- 5 minutes ago
 - 1 hour ago
 - 2 days ago
 - 1 week ago

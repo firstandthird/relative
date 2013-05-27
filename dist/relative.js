@@ -1,3 +1,10 @@
+/*!
+ * relative - Relative date library
+ * v0.1.0
+ * https://github.com/jgallen23/relative
+ * copyright Greg Allen 2013
+ * MIT License
+*/
 // Testing if Date now for retrocompatibiliy with older browsers
 if (!Date.now) {
   Date.now = function now() {
