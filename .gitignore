@@ -3,3 +3,4 @@ node_modules
 components
 reports
 .idea
+bower_components/

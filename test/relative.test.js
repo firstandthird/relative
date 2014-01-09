@@ -1,3 +1,5 @@
+//A global var of relative is set in the test's html before avascript is included.
+
 // Format Date Function
 function leadingZero(number) {
   return ('0' + number).slice(-2);
@@ -9,6 +11,11 @@ function formatDate(date){
 
 suite('relative', function() {
   suite('#relative()',function(){
+    test('noConflict should reset original value',function(){
+      var rel = relative.noConflict();
+      assert.equal(relative, 'global var');
+      window.relative = rel;
+    }),
     test('should say just now if date is less than one minute ago',function(){
       assert.equal(relative(new Date()),'just now');
     });
@@ -42,6 +49,5 @@ suite('relative', function() {
       mochaDate.setMonth(mochaDate.getMonth()-2);
       assert.equal(relative(mochaDate),formatDate(mochaDate));
     });
-
   });
 });
