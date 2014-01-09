@@ -61,6 +61,11 @@ suite('relative', function() {
       current.setDate(current.getDate()-1);
       assert.equal(relative(current.getTime()), '1 day ago');
     });
+    test('future date should be parsed', function(){
+      var current = new Date();
+      current.setDate(current.getDate() + 1);
+      assert.equal(relative(current), '1 day from now');
+    });
 
   });
 });
