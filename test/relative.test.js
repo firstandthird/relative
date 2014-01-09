@@ -48,6 +48,12 @@ suite('relative', function() {
       current.setDate(current.getDate()-1);
       assert.equal(relative(current.toString()), '1 day ago');
     });
+    test('passing timestamp should return correct string', function(){
+      var current = new Date();
+      assert.equal(relative(current), 'just now');
+      current.setDate(current.getDate()-1);
+      assert.equal(relative(current), '1 day ago');
+    });
 
   });
 });
