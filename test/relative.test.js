@@ -50,9 +50,9 @@ suite('relative', function() {
     });
     test('passing timestamp should return correct string', function(){
       var current = new Date();
-      assert.equal(relative(current), 'just now');
+      assert.equal(relative(current.getTime()), 'just now');
       current.setDate(current.getDate()-1);
-      assert.equal(relative(current), '1 day ago');
+      assert.equal(relative(current.getTime()), '1 day ago');
     });
 
   });
