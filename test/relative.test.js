@@ -49,5 +49,18 @@ suite('relative', function() {
       mochaDate.setMonth(mochaDate.getMonth()-2);
       assert.equal(relative(mochaDate),formatDate(mochaDate));
     });
+    test('passing date string should return correct string', function(){
+      var current = new Date();
+      assert.equal(relative(current.toString()), 'just now');
+      current.setDate(current.getDate()-1);
+      assert.equal(relative(current.toString()), '1 day ago');
+    });
+    test('passing timestamp should return correct string', function(){
+      var current = new Date();
+      assert.equal(relative(current.getTime()), 'just now');
+      current.setDate(current.getDate()-1);
+      assert.equal(relative(current.getTime()), '1 day ago');
+    });
+
   });
 });
