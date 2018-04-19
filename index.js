@@ -46,41 +46,41 @@ const relative = (toDate, fromDate = new Date()) => {
     }
   }
 
-  let result = '';
+  const result = {};
 
   if (toDate instanceof Date) {
     fromDate = (fromDate instanceof Date) ? fromDate : new Date();
 
-    const difference = Math.abs(toDate.getTime() - fromDate.getTime());
+    result.difference = Math.abs(toDate.getTime() - fromDate.getTime());
     const wording = (toDate.getTime() < fromDate.getTime()) ?
       relative.Strings.ago : relative.Strings.future;
 
-    if (difference > Units.Months) {
-      result = formatDate(toDate);
+    if (result.difference > Units.Months) {
+      result.string = formatDate(toDate);
     } else {
-      if (difference < Units.Minutes) {
-        result = relative.Strings.now;
+      if (result.difference < Units.Minutes) {
+        result.string = relative.Strings.now;
       } else {
         let unit = '';
         let time = 0;
 
-        if (difference < Units.Hours) {
-          time = numberAgo(difference, Units.Minutes);
+        if (result.difference < Units.Hours) {
+          time = numberAgo(result.difference, Units.Minutes);
           unit = 'm';
-        } else if (difference < Units.Days) {
-          time = numberAgo(difference, Units.Hours);
+        } else if (result.difference < Units.Days) {
+          time = numberAgo(result.difference, Units.Hours);
           unit = 'h';
-        } else if (difference < Units.Months) {
-          time = numberAgo(difference, Units.Days);
+        } else if (result.difference < Units.Months) {
+          time = numberAgo(result.difference, Units.Days);
           unit = 'd';
         } else {
-          time = numberAgo(difference, Units.Months);
+          time = numberAgo(result.difference, Units.Months);
           unit = 'M';
         }
 
         unit = time === 1 ? unit : unit + unit;
-        result = wording.replace(/%s/i, relative.Strings[unit]);
-        result = result.replace(/%d/i, time);
+        result.string = wording.replace(/%s/i, relative.Strings[unit]);
+        result.string = result.string.replace(/%d/i, time);
       }
     }
   }
@@ -91,3 +91,4 @@ const relative = (toDate, fromDate = new Date()) => {
 relative.Strings = Strings;
 
 export default relative;
+export { Units };
