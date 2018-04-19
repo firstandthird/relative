@@ -1,17 +1,63 @@
 {
-  "name": "relative",
-  "version": "0.0.0",
-  "private": true,
+  "name": "@firstandthird/relative",
+  "version": "1.0.0",
+  "description": "Easily animate numbers",
+  "main": "dist/relative.js",
+  "module": "index.js",
+  "scripts": {
+    "start": "scriptkit",
+    "dev": "scriptkit dev",
+    "test": "cat test/relative.test.dist.js | tape-run --static . --browser phantomjs --render tap-spec",
+    "prepublishonly": "scriptkit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/firstandthird/relative.git"
+  },
+  "keywords": [
+    "browser",
+    "number",
+    "animate"
+  ],
+  "author": "First+Third <code@firstandthird.com> (http://firstandthird.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/firstandthird/relative/issues"
+  },
+  "homepage": "https://github.com/firstandthird/relative#readme",
   "devDependencies": {
-    "mocha": "1.10.0",
-    "grunt": "~0.4.1",
-    "grunt-reloadr": "~0.1.2",
-    "grunt-mocha": "~0.3.0",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-uglify": "~0.2.0",
-    "grunt-contrib-jshint": "~0.5.4",
-    "grunt-contrib-connect": "~0.3.0",
-    "grunt-contrib-watch": "~0.4.3",
-    "grunt-plato": "~0.2.0"
+    "eslint-config-firstandthird": "4.3.0",
+    "eslint-plugin-compat": "^2.2.0",
+    "eslint-plugin-import": "^2.10.0",
+    "phantomjs-prebuilt": "^2.1.16",
+    "scriptkit": "0.3.0",
+    "tap-spec": "^4.1.1",
+    "tape-rollup": "4.6.4",
+    "tape-run": "4.0.0"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true
+    },
+    "extends": "firstandthird",
+    "plugins": [
+      "compat"
+    ],
+    "rules": {
+      "compat/compat": 2
+    }
+  },
+  "scriptkit": {
+    "files": {
+      "dist/relative.js": "index.js",
+      "test/relative.test.dist.js": "test/relative.test.js"
+    },
+    "scripts": {
+      "babel": {
+        "exclude": [
+          "node_modules/tape-rollup/*"
+        ]
+      }
+    }
   }
 }
