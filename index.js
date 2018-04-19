@@ -1,7 +1,4 @@
-var FirstandthirdRelative = (function () {
-'use strict';
-
-var Units = {
+const Units = {
   Seconds: 1e3,
   Minutes: 6e4,
   Hours: 36e5,
@@ -9,7 +6,7 @@ var Units = {
   Months: 2674800000
 };
 
-var Strings = {
+const Strings = {
   ago: '%s ago',
   future: '%s from now',
   now: 'just now',
@@ -24,7 +21,7 @@ var Strings = {
 };
 
 function leadingZero(number) {
-  return ('0' + number).slice(-2);
+  return `0${number}`.slice(-2);
 }
 
 function numberAgo(number, ms) {
@@ -32,12 +29,14 @@ function numberAgo(number, ms) {
 }
 
 function formatDate(date) {
-  return [leadingZero(date.getMonth() + 1), leadingZero(date.getDate()), date.getFullYear()].join('/');
+  return [
+    leadingZero(date.getMonth() + 1),
+    leadingZero(date.getDate()),
+    date.getFullYear()
+  ].join('/');
 }
 
-var relative = function relative(toDate) {
-  var fromDate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new Date();
-
+const relative = (toDate, fromDate = new Date()) => {
   if (toDate instanceof Date === false) {
     toDate = new Date(toDate);
     // toDate is a date
@@ -47,13 +46,14 @@ var relative = function relative(toDate) {
     }
   }
 
-  var result = '';
+  let result = '';
 
   if (toDate instanceof Date) {
-    fromDate = fromDate instanceof Date ? fromDate : new Date();
+    fromDate = (fromDate instanceof Date) ? fromDate : new Date();
 
-    var difference = Math.abs(toDate.getTime() - fromDate.getTime());
-    var wording = toDate.getTime() < fromDate.getTime() ? relative.Strings.ago : relative.Strings.future;
+    const difference = Math.abs(toDate.getTime() - fromDate.getTime());
+    const wording = (toDate.getTime() < fromDate.getTime()) ?
+      relative.Strings.ago : relative.Strings.future;
 
     if (difference > Units.Months) {
       result = formatDate(toDate);
@@ -61,8 +61,8 @@ var relative = function relative(toDate) {
       if (difference < Units.Minutes) {
         result = relative.Strings.now;
       } else {
-        var unit = '';
-        var time = 0;
+        let unit = '';
+        let time = 0;
 
         if (difference < Units.Hours) {
           time = numberAgo(difference, Units.Minutes);
@@ -90,8 +90,4 @@ var relative = function relative(toDate) {
 
 relative.Strings = Strings;
 
-return relative;
-
-}());
-
-//# sourceMappingURL=relative.js.map
+export default relative;

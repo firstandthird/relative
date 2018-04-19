@@ -1,29 +1,13 @@
-<!DOCTYPE HTML>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>relative Tests</title>
-  <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
-  <script src="../bower_components/assert/assert.js"></script>
-  <script src="../node_modules/mocha/mocha.js"></script>
-  <!--<script src="../components/blanket/dist/qunit/blanket.min.js" data-cover-adapter="../components/blanket/src/adapters/mocha-blanket.js"></script>-->
-  <script>
-    mocha.setup('tdd');
-
-    window.relative = 'global var';
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 </head>
 <body>
-  <div id="mocha"></div>
-  <div id="fixture" style="display: none">
-
-  </div>
-  <script src="../dist/relative.js" data-cover></script>
-  <script src="relative.test.js"></script>
-  <script>
-    if (navigator.userAgent.indexOf('PhantomJS') < 0) {
-      mocha.run();
-    }
-  </script>
+  <script src="relative.test.dist.js"></script>
 </body>
 </html>
